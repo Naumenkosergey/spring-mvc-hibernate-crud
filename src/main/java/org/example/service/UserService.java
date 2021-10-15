@@ -8,7 +8,7 @@ public interface UserService {
 
     List<User> getAllUser();
 
-    User getByIdUser(Long id);
+    User getUserById(Long id);
 
     void removeUser(Long id);
 

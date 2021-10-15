@@ -4,22 +4,26 @@ import lombok.AllArgsConstructor;
 import org.example.dao.UserDao;
 import org.example.model.User;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @AllArgsConstructor
+@Transactional()
 public class UserServiceImpl implements UserService {
 
     private final UserDao userDao;
 
     @Override
+    @Transactional(readOnly = true)
     public List<User> getAllUser() {
         return userDao.getAllUser();
     }
 
     @Override
-    public User getByIdUser(Long id) {
+    @Transactional(readOnly = true)
+    public User getUserById(Long id) {
         return userDao.getUserById(id);
     }
 

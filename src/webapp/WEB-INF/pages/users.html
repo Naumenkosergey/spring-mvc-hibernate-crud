@@ -7,19 +7,37 @@
 </head>
 <body>
 <h1>User List</h1>
-<table border="3px" cellspacing="0px" cellpadding="5px">
+
+<table th:if="${not #lists.isEmpty(listUser)}" border="3px" cellspacing="0px" cellpadding="5px">
     <tr>
         <th>id</th>
         <th>name</th>
         <th>age</th>
         <th>height</th>
+        <th>edit</th>
+        <th>Delete</th>
     </tr>
     <tr th:each="user:${listUser}">
         <td th:text="${user.id}"></td>
         <td th:text="${user.name}"></td>
         <td th:text="${user.age}"></td>
         <td th:text="${user.height}"></td>
+        <td><a th:href="/user/edit/${user.id}">edit</a></td>
+        <td><a th:href="/user/remove/${user.id}">delete</a></td>
+        <td><a th:href="/user/${user.id}" target="_blank">details</a></td>
     </tr>
+
 </table>
+
+<h1>add USER</h1>
+<form th:action="@{/users/add}" th:object="${user}" method="post">
+    <label>Enter Name: </label>
+    <input type="text" th:field="*{name}"><br>
+    <label>Enter Height: </label>
+    <input type="text" th:field="*{height}"><br>
+    <label>Enter Age: </label>
+    <input type="text" th:field="*{age}"><br>
+    <input type="submit" th:value="OK">
+</form>
 </body>
 </html>
