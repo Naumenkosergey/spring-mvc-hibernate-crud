@@ -1,4 +1,4 @@
-package org.example.confic;
+package org.example.config;
 
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
